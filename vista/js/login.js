@@ -7,16 +7,16 @@ $(document).ready(function(){
         var contraseña = $("#contraseña").val();
 
         // Expresión regular para validar la contraseña: Al menos 8 caracteres, incluyendo al menos una letra mayúscula, una letra minúscula y un número.
-        var regexContraseña = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+        //var regexContraseña = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
-        if (nombre.trim() == '') {
-            $(".error").html("Por favor ingresa un nombre de usuario.");
-            return;
-        }
-        if (!regexContraseña.test(contraseña)) {
-            $(".error").html("La contraseña debe tener al menos 8 caracteres, incluyendo al menos una letra mayúscula, una letra minúscula y un número.");
-            return;
-        }
+        // if (nombre.trim() == '') {
+        //     $(".error").html("Por favor ingresa un nombre de usuario.");
+        //     return;
+        // }
+        // if (!regexContraseña.test(contraseña)) {
+        //     $(".error").html("La contraseña debe tener al menos 8 caracteres, incluyendo al menos una letra mayúscula, una letra minúscula y un número.");
+        //     return;
+        // }
 
         // Envío de los datos mediante AJAX
         $.ajax({
