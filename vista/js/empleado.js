@@ -2,29 +2,27 @@ $(document).ready(function() {
     $("#FormularioEmpleado").submit(function(event) {
         event.preventDefault();
 
-        var formData = {
-            idEmpleado: $("#idEmpleado").val(),
-            nombre: $("#nombre").val(),
-            apellidos: $("#apellidos").val(),
-            correo: $("#correo").val(),
-            salario: $("#salario").val(),
-            DIP: $("#dip").val(),
-            edad: $("#edad").val(),
-            rol: $("#rol").val(),
-            foto: $("#foto").val()
-        };
+        var formData = new FormData();
+        formData.append("foto",$("#foto")[0].files[0]);
+        formData.append("nombre",$("#nombre").val());
+        formData.append("apellidos",$("#apellidos").val());
+        formData.append("correo",$("#correo").val());
+        formData.append("salario",$("#salario").val());
+        formData.append("dip",$("#dip").val());
+        formData.append("edad",$("#edad").val());
+        formData.append("rol",$("#rol").val());
 
         $.ajax({
             url: "../../controlador/c_empleado.php",
             type: "POST",
             data: formData,
+            processData:false,
+            contentType:false,
+            cache:false,
             success: function(data) {
-                if (data === "success") {
-                    alert("Empleado registrado con éxito!");
-                    $("#empleadoForm")[0].reset();
-                } else {
-                    alert("Error al registrar empleado: " + data);
-                }
+                
+                    alert("naaa" + data);
+                
             },
             error: function(xhr, status, error) {
                 alert("Error inesperado: " + error);
