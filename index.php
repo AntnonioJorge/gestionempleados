@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <div class="container">
     <h2>Inicio de Sesión</h2>
-    <form id="Formulario-login">
+    <form action="controlador/c_login.php" method="post" id="Formulario-login">
         <div>
             <label for="nombre">Nombre de usuario:</label><br>
             <input type="text" id="nombre" name="nombre" required><br>
@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="error"></div>
     </form>
 </div>
-<script src="vista/js/login.js"></script>
+<!--<script src="vista/js/login.js"></script>-->
 </body>
 </html>
 
