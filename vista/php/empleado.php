@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Empleado</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
 </head>
 <body>
     <h1>Registro de Empleado</h1>
-    <form id="FormularioEmpleado">
+    <form id="FormularioEmpleado" >
     
 
         <label for="nombre">Nombre:</label>
@@ -34,10 +33,11 @@
         <input type="text" id="rol" name="rol" required><br>
 
         <label for="foto">foto:</label>
-        <input type="image" id="foto" name="foto" ><br>
+        <input type="file" id="foto" name="foto" ><br>
 
         <button type="submit">Registrar</button>
     </form>
+    <script src="../js/jquery-3.7.1.min.js"></script>
     <script src="../js/empleado.js">
     
     </script>
