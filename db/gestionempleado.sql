@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-06-2024 a las 10:10:24
+-- Tiempo de generación: 10-06-2024 a las 10:40:21
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -33,7 +33,6 @@ CREATE TABLE `empleado` (
   `apellidosEmpleado` varchar(50) NOT NULL,
   `correoEmpleado` varchar(50) DEFAULT NULL,
   `salarioEmpleado` int(11) NOT NULL,
-  `rolEmpleado` varchar(50) NOT NULL,
   `edadEmpleado` int(11) NOT NULL,
   `dipEmpleado` varchar(50) NOT NULL,
   `fotoEmpleado` varchar(50) NOT NULL
@@ -48,7 +47,8 @@ CREATE TABLE `empleado` (
 CREATE TABLE `usuario` (
   `idUsuario` int(11) NOT NULL,
   `nombreUsuario` varchar(50) NOT NULL,
-  `contrasenaUsuario` varchar(50) NOT NULL
+  `contrasenaUsuario` varchar(50) NOT NULL,
+  `rolEmpleado` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
