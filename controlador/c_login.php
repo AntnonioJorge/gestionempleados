@@ -1,8 +1,8 @@
 <?php 
     session_start();
     if ($_SERVER["REQUEST_METHOD"]=="POST"){
-        include "../dao/conexion.php";
-        include "../dao/usuario.php";
+        include "../dao/d_conexion.php";
+        include "../dao/d_usuario.php";
        
         if(!empty($_POST["nombreUsuario"]) and !empty($_POST["contrasenaUsuario"])){
             $conexion=conectar("localhost","root","","gestionempleado");
