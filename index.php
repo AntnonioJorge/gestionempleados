@@ -14,9 +14,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Formulario de Inicio de Sesión</title>
 <link rel="stylesheet" href="vista/css/login.css">
+<link rel="stylesheet" href="vista/css/bootstrap.min.css">
 </head>
+
 <body>
-<div class="container">
+
+<div class="containerl">
+<?php
+    if(isset($_GET["error"])){
+        echo '<div class="btn alert-warning">error en el usuario o contraseña</div>';
+    }
+ ?>
     <h2>Inicio de Sesión</h2>
     <form action="controlador/c_login.php" method="post" id="Formulario-login">
         <div>

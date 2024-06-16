@@ -1,3 +1,9 @@
+<?php   
+    session_start();
+
+    if(isset($_SESSION["nombre"])){
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -33,7 +39,7 @@
                     </ul>
                     
                     <form class="">
-                    <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" id="btSesion">Cerrar Sesión</button>
+                    <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" onclick="window.location.href='../../index.php?cerrar'" id="btSesion">Cerrar Sesión</button>
                     </form>
                 </div>
 
@@ -46,12 +52,8 @@
                 <tr>
                     <th>id</th>
                     <th>nombre</th>
-                    <th>apellidos</th>
-                    <th>correo</th>
-                    <th>salario</th>
-                    <th>edad</th>
-                    <th>dip</th>
-                    <th>foto</th>
+                    <th>contraseña</th>
+                    <th>rol</th>
                     <th></th>
                 </tr>
                 <tr>
@@ -59,10 +61,6 @@
                     <td>alex</td>
                     <td>miko</td>
                     <td>1@gnail.es</td>
-                    <td>3000 xaf</td>
-                    <td>29</td>
-                    <td>000.347.774</td>
-                    <td><img src="" alt="img"></td>
                     <td><i></i><i></i></td>
                 </tr>
             </table>
@@ -71,3 +69,6 @@
     <script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
+<?php  
+    }
+?>

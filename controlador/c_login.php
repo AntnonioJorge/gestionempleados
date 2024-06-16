@@ -13,11 +13,15 @@
             if($nombre==$persona["nombreUsuario"] && $contra==$persona["contrasenaUsuario"] && $persona["idRol"]==1){
                 $_SESSION["nombre"]=$nombre;
     
-                echo "datos correctos,procedemos a iniciar sesión";
                 header("Location:../vista/php/vistaAdmin.php");
             }
+            elseif($nombre==$persona["nombreUsuario"] && $contra==$persona["contrasenaUsuario"] && $persona["idRol"]==2){
+                $_SESSION["nombre"]=$nombre;
+
+                header("Location:../vista/php/vistaSuperAdmin.php");
+            }
             else{
-                echo "datos incorrectos";
+                header("Location:../index.php?error");
             }
         }
         
