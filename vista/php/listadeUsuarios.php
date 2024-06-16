@@ -3,38 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SweetAlert2 CSS -->
     <link rel="stylesheet" href="../css/sweetalert2.min.css">
 
     <!-- SweetAlert2 JS -->
     <script src="../js/sweetalert2.all.min.js"></script>
-
-    <title>Lista de los empleados</title>
+    <title>Lista de usuarios</title>
 </head>
 <body>
-
+    
 <?php
         include ("../../dao/d_conexion.php");
-        include ("../../dao/d_empleado.php");
+        include ("../../dao/d_usuario.php");
         $bdd = conectar("localhost", "root", "","gestionempleado");
-        $empleados= mostrarTodosEmpleados($bdd);
+        $usuarios= mostrarTodosUsuarios($bdd);
+       // $usuariosAEliminar = eliminarUsuario($bdd, $_GET['idUsuarioEliminar']);
 
-        if (isset($_GET['idEmpleadoEliminar'])) {
+        if (isset($_GET['idUsuarioEliminar'])) {
             // Verificar si el usuario realmente desea eliminar el empleado
             $confirmarEliminacion = isset($_GET['confirmarEliminacion']) && $_GET['confirmarEliminacion'] === 'true';
 
             if ($confirmarEliminacion) {
-                if (eliminarEmpleados($bdd, $_GET['idEmpleadoEliminar'])) {
+                if (eliminarUsuario($bdd, $_GET['idUsuarioEliminar'])) {
                     echo '
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {
                                 Swal.fire({
                                     icon: "success",
-                                    title: "¡El empleado ha sido eliminado correctamente!",
+                                    title: "¡El usuario ha sido eliminado correctamente!",
                                     showConfirmButton: false,
                                     timer: 2000
                                 }).then(function() {
-                                    window.location.href = "listaEmpleados.php"; // Redirige a la lista de empleados después de la notificación
+                                    window.location.href = "listadeUsuarios.php"; // Redirige a la lista de empleados después de la notificación
                                 });
                             });
                         </script>
@@ -46,7 +45,7 @@
                     <script>
                         document.addEventListener("DOMContentLoaded", function() {
                             Swal.fire({
-                                title: "¿Estás seguro de que deseas eliminar este empleado?",
+                                title: "¿Estás seguro de que deseas eliminar este usuario?",
                                 text: "Esta acción es irreversible.",
                                 icon: "warning",
                                 showCancelButton: true,
@@ -56,7 +55,7 @@
                                 cancelButtonText: "Cancelar"
                             }).then(function(result) {
                                 if (result.value) {
-                                    window.location.href = "listaEmpleados.php?idEmpleadoEliminar=' . $_GET['idEmpleadoEliminar'] . '&confirmarEliminacion=true";
+                                    window.location.href = "listadeUsuarios.php?idUsuarioEliminar=' . $_GET['idUsuarioEliminar'] . '&confirmarEliminacion=true";
                                 }
                             });
                         });
@@ -71,17 +70,12 @@
 
                 ?>
                 <table>
-            <caption>Lista de todos los empleados</caption>
+            <caption>Lista de todos los usuarios</caption>
             <thead>
                 <tr>
-                    <td>Foto</td>
                     <td>Nombre</td>
-                    <td>Apellidos</td>
-                    <td>Correo</td>
-                    <td>Dip</td>
-                    <td hidden>Rol</td>
-                    <td>Salario</td>
-                    <td>Edad</td>
+                    <td>Contraseña</td>
+                    <td>Rol</td>
                     <td>Actualizar</td>
                     <td>Eliminar</td>
                 </tr>
@@ -89,24 +83,20 @@
             <tbody>
 
             <?php
-                foreach($empleados as $empleado){?>
+                foreach($usuarios as $us){?>
             
             <tr>
-                <td > <img style="border:1px solid black; border-radius: 10%" scope="row" alt="" width="80" hight="" src="../img/<?php echo $empleado["fotoEmpleado"]; ?>"> </td>
-                <td><?php echo $empleado["nombreEmpleado"];?> </td>
-                <td><?php echo $empleado["apellidosEmpleado"]; ?></td>
-                <td><?php echo $empleado["correoEmpleado"]; ?></td>
-                <td><?php echo $empleado["dipEmpleado"]; ?></td>
-                <td hidden><?php echo $empleado["rolEmpleado"]; ?></td>
-                <td><?php echo $empleado["salarioEmpleado"]; ?></td>
-                <td><?php echo $empleado["edadEmpleado"]; ?></td>
+          
+                <td><?php echo $us["nombreUsuario"];?> </td>
+                <td><?php echo $us["contraseñaUsuario"]; ?></td>
+                <td><?php echo $us["rolUsuario"]; ?></td>
             
                 <td>
-                    <a href="actualizarEmpleado.php?idEmpleadoActualizar=<?php echo $empleado['idEmpleado'];?>">Actualizar</a>
+                    <a href="actualizarUsuario.php?idUsuarioActualizar=<?php echo $us['idUsuario'];?>">Actualizar</a>
                 </td>
                 
                 <td>
-                    <a href="listaEmpleados.php?idEmpleadoEliminar=<?php echo $empleado['idEmpleado'];?> id='btnEliminar' value='empleado'">Eliminar</a>
+                    <a href="listadeUsuarios.php?idUsuarioEliminar=<?php echo $us['idUsuario'];?>  ">Eliminar</a>
                 </td>
 
             
@@ -120,6 +110,5 @@
 
 
 
-            <script src="../js/script.js"></script>
 </body>
 </html>
