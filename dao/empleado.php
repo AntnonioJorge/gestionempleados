@@ -51,8 +51,8 @@
     }
     function insertarEmpleados($conexion,$empleado){
         try{
-            $sql="INSERT INTO empleado(nombreEmpleado,apellidosEmpleado,correoEmpleado,salarioEmpleado,rolEmpleado,edadEmpleado,dipEmpleado,fotoEmpleado)
-            VALUES('$empleado->nombreEmpleado','$empleado->apellidosEmpleado','$empleado->correoEmpleado','$empleado->salarioEmpleado','$empleado->rolEmpleado','$empleado->edadEmpleado','$empleado->dipEmpleado','$empleado->fotoEmpleado')";
+            $sql="INSERT INTO empleado(nombreEmpleado,apellidosEmpleado,correoEmpleado,salarioEmpleado,edadEmpleado,dipEmpleado,fotoEmpleado)
+            VALUES('$empleado->nombreEmpleado','$empleado->apellidosEmpleado','$empleado->correoEmpleado','$empleado->salarioEmpleado','$empleado->edadEmpleado','$empleado->dipEmpleado','$empleado->fotoEmpleado')";
             $sql=$conexion->query($sql);
         }catch(Exception $e){
             echo "error al insertar empleado ".$e;

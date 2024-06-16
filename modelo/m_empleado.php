@@ -9,17 +9,15 @@ class Empleado {
     public $apellidosEmpleado;
     public $correoEmpleado;
     public $salarioEmpleado;
-    public $rolEmpleado;
     public $edadEmpleado;
     public $dipEmpleado;
     public $fotoEmpleado;
 
-    public function __construct($nombreEmpleado, $apellidosEmpleado, $correoEmpleado, $salarioEmpleado, $rolEmpleado, $edadEmpleado, $dipEmpleado, $fotoEmpleado) {
+    public function __construct($nombreEmpleado, $apellidosEmpleado, $correoEmpleado, $salarioEmpleado,$edadEmpleado, $dipEmpleado, $fotoEmpleado) {
         $this->nombreEmpleado = $nombreEmpleado;
         $this->apellidosEmpleado = $apellidosEmpleado;
         $this->correoEmpleado = $correoEmpleado;
         $this->salarioEmpleado = $salarioEmpleado;
-        $this->rolEmpleado = $rolEmpleado;
         $this->edadEmpleado = $edadEmpleado;
         $this->dipEmpleado = $dipEmpleado;
         $this->fotoEmpleado = $fotoEmpleado;
@@ -63,14 +61,6 @@ class Empleado {
 
     public function setSalarioEmpleado($salarioEmpleado) {
         $this->salarioEmpleado = $salarioEmpleado;
-    }
-
-    public function getRolEmpleado() {
-        return $this->rolEmpleado;
-    }
-
-    public function setRolEmpleado($rolEmpleado) {
-        $this->rolEmpleado = $rolEmpleado;
     }
 
     public function getEdadEmpleado() {

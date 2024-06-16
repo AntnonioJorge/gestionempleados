@@ -1,7 +1,7 @@
 <?php 
     function recuperarUsuarioContrasena($conexion,$user,$contra){
         try{
-            $sql="SELECT * FROM usuario
+            $sql="SELECT * FROM usuarios
             WHERE nombreUsuario='$user' and contrasenaUsuario='$contra'";
             $resultado=$conexion->query($sql);
             return $resultado->fetch_assoc();
