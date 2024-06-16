@@ -10,7 +10,7 @@ $(document).ready(function() {
         formData.append("salario",$("#salario").val());
         formData.append("dip",$("#dip").val());
         formData.append("edad",$("#edad").val());
-        formData.append("rol",$("#rol").val());
+       // formData.append("rol",$("#rol").val());
 
         $.ajax({
             url: "../../controlador/c_empleado.php",
