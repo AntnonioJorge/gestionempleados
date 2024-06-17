@@ -2,6 +2,7 @@
 
 if(isset($_POST['actualizar']))
 {
+    
     include "../dao/d_conexion.php";
     include "../dao/d_empleado.php";
     include "../modelo/m_empleado.php";
@@ -17,9 +18,9 @@ if(isset($_POST['actualizar']))
     header("Location: ../vista/php/listaEmpleados.php");
 }
 
-if($_SERVER["REQUEST_METHOD"]=="POST"){
+if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["registrar"])){
 
-    
+    echo "aser";
     include "../dao/d_conexion.php";
     include "../dao/d_empleado.php";
     include "../modelo/m_empleado.php";

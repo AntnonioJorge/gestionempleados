@@ -9,27 +9,15 @@ class Empleado{
     public $apellidosEmpleado;
     public $correoEmpleado;
     public $salarioEmpleado;
-<<<<<<< HEAD
-    //public $rolEmpleado;
-=======
->>>>>>> be4d6dce05bd420ea7778f35be28445208740aee
     public $edadEmpleado;
     public $dipEmpleado;
     public $fotoEmpleado;
 
-<<<<<<< HEAD
-    public function __construct($nombreEmpleado, $apellidosEmpleado, $correoEmpleado, $salarioEmpleado, /* $rolEmpleado, */ $edadEmpleado, $dipEmpleado, $fotoEmpleado) {
-=======
     public function __construct($nombreEmpleado, $apellidosEmpleado, $correoEmpleado, $salarioEmpleado,$edadEmpleado, $dipEmpleado, $fotoEmpleado) {
->>>>>>> be4d6dce05bd420ea7778f35be28445208740aee
         $this->nombreEmpleado = $nombreEmpleado;
         $this->apellidosEmpleado = $apellidosEmpleado;
         $this->correoEmpleado = $correoEmpleado;
         $this->salarioEmpleado = $salarioEmpleado;
-<<<<<<< HEAD
-       // $this->rolEmpleado = $rolEmpleado;
-=======
->>>>>>> be4d6dce05bd420ea7778f35be28445208740aee
         $this->edadEmpleado = $edadEmpleado;
         $this->dipEmpleado = $dipEmpleado;
         $this->fotoEmpleado = $fotoEmpleado;
@@ -75,14 +63,6 @@ class Empleado{
         $this->salarioEmpleado = $salarioEmpleado;
     }
 
-<<<<<<< HEAD
-/*     public function getRolEmpleado() {
-        return $this->rolEmpleado;
-    }
-
-    public function setRolEmpleado($rolEmpleado) {
-        $this->rolEmpleado = $rolEmpleado;
-    } */
 
     public function getEdadEmpleado() {
         return $this->edadEmpleado;
@@ -173,16 +153,8 @@ class Empleados{
         $this->salarioEmpleado = $salarioEmpleado;
     }
 
-/*     public function getRolEmpleado() {
-        return $this->rolEmpleado;
-    }
 
-    public function setRolEmpleado($rolEmpleado) {
-        $this->rolEmpleado = $rolEmpleado;
-    } */
 
-=======
->>>>>>> be4d6dce05bd420ea7778f35be28445208740aee
     public function getEdadEmpleado() {
         return $this->edadEmpleado;
     }
@@ -199,13 +171,13 @@ class Empleados{
         $this->dipEmpleado = $dipEmpleado;
     }
 
-    public function getFotoEmpleado() {
-        return $this->fotoEmpleado;
-    }
+    // public function getFotoEmpleado() {
+    //     return $this->fotoEmpleado;
+    // }
 
-    public function setFotoEmpleado($fotoEmpleado) {
-        $this->fotoEmpleado = $fotoEmpleado;
-    }
+    // public function setFotoEmpleado($fotoEmpleado) {
+    //     $this->fotoEmpleado = $fotoEmpleado;
+    // }
 }
 
 ?>

@@ -10,11 +10,8 @@ $(document).ready(function() {
         formData.append("salario",$("#salario").val());
         formData.append("dip",$("#dip").val());
         formData.append("edad",$("#edad").val());
-<<<<<<< HEAD
-       // formData.append("rol",$("#rol").val());
-=======
+        formData.append("registrar",$("#btnregistrar").val());
         // formData.append("rol",$("#rol").val());
->>>>>>> be4d6dce05bd420ea7778f35be28445208740aee
 
         $.ajax({
             url: "../../controlador/c_empleado.php",
@@ -25,7 +22,7 @@ $(document).ready(function() {
             cache:false,
             success: function(data) {
                 
-                    alert("naaa" + data);
+                    alert(data);
                 
             },
             error: function(xhr, status, error) {

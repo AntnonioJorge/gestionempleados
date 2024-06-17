@@ -100,7 +100,7 @@ if(isset($_SESSION["nombre"])){
                     <label for="foto">foto:</label>
                     <input type="file" id="foto" name="foto" ><br>
 
-                    <button type="submit">Registrar</button>
+                    <button id="btnregistrar" name="registrar" type="submit">Registrar</button>
                 </form>
             </dialog>
         </main>
