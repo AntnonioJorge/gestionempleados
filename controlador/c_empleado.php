@@ -15,7 +15,7 @@ if(isset($_POST['actualizar']))
 
     $empleadoActualizar = new Empleados($_POST["idEmpleado"], $_POST["nombre"],$_POST["apellidos"],$_POST["correo"],$_POST["salario"],$_POST["edad"],$_POST["dip"]); 
     $resultado = actualizarEmpleado($bdd,$empleadoActualizar);
-    header("Location: ../vista/php/listaEmpleados.php");
+    header("Location: ../vista/php/vistaAdmin.php");
 }
 
 if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["registrar"])){

@@ -63,21 +63,15 @@
                 ';
             }
         }
-
-                
-                
-                
-
-                ?>
+       ?>
                 <table>
             <caption>Lista de todos los usuarios</caption>
             <thead>
                 <tr>
+                    <td>Id</td>
                     <td>Nombre</td>
                     <td>Contraseña</td>
                     <td>Rol</td>
-                    <td>Actualizar</td>
-                    <td>Eliminar</td>
                 </tr>
             </thead>
             <tbody>
@@ -86,9 +80,9 @@
                 foreach($usuarios as $us){?>
             
             <tr>
-          
+                <td><?php echo $us["idUsuario"];?> </td>
                 <td><?php echo $us["nombreUsuario"];?> </td>
-                <td><?php echo $us["contraseñaUsuario"]; ?></td>
+                <td><?php echo $us["contrasenaUsuario"]; ?></td>
                 <td><?php echo $us["rolUsuario"]; ?></td>
             
                 <td>

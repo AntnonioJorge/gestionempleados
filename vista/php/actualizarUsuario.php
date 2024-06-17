@@ -24,7 +24,7 @@
         <input type="hidden" value="<?php echo $datos['idUsuario'] ?>" name="idUsuario">
         <!-- <input type="text" value="<?php echo $datos['idUsuario'] ?>" name="idUsuarios"> -->
         <input type="text" placeholder="NombreUsuario" value="<?php echo $datos['nombreUsuario'] ?>" name="nombreUsuario"> <br><br>
-        <input type="password" placeholder="ContraseñaUsuarios"  value="<?php echo $datos['contraseñaUsuario'] ?>" name="contraseñaUsuario"><br><br>
+        <input type="password" placeholder="ContrasenaUsuarios"  value="<?php echo $datos['contrasenaUsuario'] ?>" name="contrasenaUsuario"><br><br>
         <label for="rol">ROL</label>
         <select name="Rol" id="idRol">
              <?php
