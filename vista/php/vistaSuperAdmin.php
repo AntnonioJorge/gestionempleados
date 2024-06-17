@@ -1,3 +1,9 @@
+<?php   
+    session_start();
+
+    if(isset($_SESSION["nombre"])){
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -36,7 +42,7 @@
                     </ul>
                     
                     <form class="">
-                    <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" id="btSesion">Cerrar Sesión</button>
+                    <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop" type="button" onclick="window.location.href='../../index.php?cerrar'" id="btSesion">Cerrar Sesión</button>
                     </form>
                 </div>
 
@@ -99,11 +105,26 @@
             <table class="table table-dark table-bordered mt-3">
             <thead>
                 <tr>
+<<<<<<< HEAD
                     <td>ID</td>
                     <td>Nombre</td>
                     <td>Contraseña</td>
                     <td>Rol</td>
                     <td></td>
+=======
+                    <th>id</th>
+                    <th>nombre</th>
+                    <th>contraseña</th>
+                    <th>rol</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>alex</td>
+                    <td>miko</td>
+                    <td>1@gnail.es</td>
+                    <td><i></i><i></i></td>
+>>>>>>> fc8fd12bef7d92edf7d3ed2a68c9254da96c5b9b
                 </tr>
             </thead>
 
@@ -160,4 +181,10 @@
     <script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
+<<<<<<< HEAD
 
+=======
+<?php  
+    }
+?>
+>>>>>>> fc8fd12bef7d92edf7d3ed2a68c9254da96c5b9b
