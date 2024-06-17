@@ -13,9 +13,9 @@
             include ("../dao/d_usuario.php");
             include ("../modelo/m_usuario.php");
             $bdd = conectar("localhost", "root", "", "gestionempleado");
-            $usuarioActualizar = new Usuario($_POST["idUsuario"],$_POST["nombreUsuario"], $_POST["contraseñaUsuario"], $_POST["contraseñaUsuario"]);
+            $usuarioActualizar = new Usuario($_POST["idUsuario"],$_POST["nombreUsuario"], $_POST["contrasenaUsuario"]);
             $resultado = actualizarUsuario($bdd, $usuarioActualizar);
-            header("Location: ../vista/php/listadeUsuarios.php");
+            header("Location: ../vista/php/vistaSuperAdmin.php");
            /*  if (!$resultado) {
 
         echo 

@@ -48,7 +48,7 @@
         try{
             $sql = "UPDATE usuarios SET 
                     nombreUsuario = '$usuario->nombreUsuario', 
-                    contraseñaUsuario = '$usuario->contraseñaUsuario'
+                    contrasenaUsuario = '$usuario->contraseñaUsuario'
                     WHERE idUsuario = '$usuario->idUsuario'";
             $conexion->query($sql);
             

@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(isset($_SESSION["nombre"])){
-?>
+if(isset($_SESSION["nombre"])){?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +9,10 @@ if(isset($_SESSION["nombre"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vista del administrador</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/sweetalert2.min.css">
     <script src="../js/all.min.js"></script>
+    <script src="../js/sweetalert2.all.min.js"></script>
+
 </head>
 <body>
     <div class="container-fluid vh-100">
@@ -44,32 +47,97 @@ if(isset($_SESSION["nombre"])){
 
             </div>
         </nav>
+        <?php
+        include ("../../dao/d_conexion.php");
+        include ("../../dao/d_empleado.php");
+        $bdd = conectar("localhost", "root", "","gestionempleado");
+        $empleados= mostrarTodosEmpleados($bdd);
+
+        if (isset($_GET['idEmpleadoEliminar'])) {
+            // Verificar si el usuario realmente desea eliminar el empleado
+            $confirmarEliminacion = isset($_GET['confirmarEliminacion']) && $_GET['confirmarEliminacion'] === 'true';
+
+            if ($confirmarEliminacion) {
+                if (eliminarEmpleados($bdd, $_GET['idEmpleadoEliminar'])) {
+                    echo '
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "¡El empleado ha sido eliminado correctamente!",
+                                    showConfirmButton: false,
+                                    timer: 2000
+                                }).then(function() {
+                                    window.location.href = "vistaAdmin.php"; // Redirige a la lista de empleados después de la notificación
+                                });
+                            });
+                        </script>
+                    ';
+                } 
+            } else {
+                // Mostrar un mensaje de confirmación
+                echo '
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            Swal.fire({
+                                title: "¿Estás seguro de que deseas eliminar este empleado?",
+                                text: "Esta acción es irreversible.",
+                                icon: "warning",
+                                showCancelButton: true,
+                                confirmButtonColor: "#3085d6",
+                                cancelButtonColor: "#d33",
+                                confirmButtonText: "Sí, eliminar",
+                                cancelButtonText: "Cancelar"
+                            }).then(function(result) {
+                                if (result.value) {
+                                    window.location.href = "vistaAdmin.php?idEmpleadoEliminar=' . $_GET['idEmpleadoEliminar'] . '&confirmarEliminacion=true";
+                                }
+                            });
+                        });
+                    </script>
+                ';
+            }
+        }
+        ?>
         <main class="container">
             <h1>Bienvenido <?php echo $_SESSION["nombre"]; ?></h1>
             <h2>Lista de Empleados</h2>
             <table class="table table-dark table-bordered mt-3">
+
+            <thead>
                 <tr>
-                    <th>id</th>
-                    <th>nombre</th>
-                    <th>apellidos</th>
-                    <th>correo</th>
-                    <th>salario</th>
-                    <th>edad</th>
-                    <th>dip</th>
-                    <th>foto</th>
-                    <th></th>
+                    <td>Foto</td>
+                    <td>Nombre</td>
+                    <td>Apellidos</td>
+                    <td>Correo</td>
+                    <td>Dip</td>
+                    <td hidden>Rol</td>
+                    <td>Salario</td>
+                    <td>Edad</td>
+                    <td>Accion</td>
                 </tr>
+            </thead>
+            <tbody>
+            <?php
+                foreach($empleados as $empleado){?>
                 <tr>
-                    <td>1</td>
-                    <td>alex</td>
-                    <td>miko</td>
-                    <td>1@gnail.es</td>
-                    <td>3000 xaf</td>
-                    <td>29</td>
-                    <td>000.347.774</td>
-                    <td><img src="" alt="img"></td>
-                    <td><a class="btn btn-warning btn-sm " href=""><i class="fa-regular fa-edit"></i></a> <a class="btn btn-sm btn-danger" href=""> <i class="fa-regular fa-trash-can"></i></a></td>
+                    <td > <img style="border:1px solid black; border-radius: 10%" scope="row" alt="" width="80" hight="" src="../img/<?php echo $empleado["fotoEmpleado"]; ?>"> </td>
+                    <td><?php echo $empleado["nombreEmpleado"];?> </td>
+                    <td><?php echo $empleado["apellidosEmpleado"]; ?></td>
+                    <td><?php echo $empleado["correoEmpleado"]; ?></td>
+                    <td><?php echo $empleado["dipEmpleado"]; ?></td>
+                    <td hidden><?php echo $empleado["rolEmpleado"]; ?></td>
+                    <td><?php echo $empleado["salarioEmpleado"]; ?></td>
+                    <td><?php echo $empleado["edadEmpleado"]; ?></td>
+                    <td>
+                        <a class="btn btn-warning btn-sm " href="actualizarEmpleado.php?idEmpleadoActualizar=<?php echo $empleado['idEmpleado'];?>"><i class="fa-regular fa-edit"></i></a> 
+                        <a class="btn btn-sm btn-danger" href="vistaAdmin.php?idEmpleadoEliminar=<?php echo $empleado['idEmpleado'];?> id='btnEliminar' value='empleado'"> <i class="fa-regular fa-trash-can"></i></a>
+                    </td>
+        
                 </tr>
+                <?php
+                }             
+            ?>
             </table>
             <dialog id="modal_empleado">
                 <h1>Registro de Empleado</h1>
@@ -101,10 +169,13 @@ if(isset($_SESSION["nombre"])){
                     <input type="file" id="foto" name="foto" ><br>
 
                     <button type="submit">Registrar</button>
+                    
+                    <input type="reset" value="Cancelar">
                 </form>
             </dialog>
         </main>
     </div>
+
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/jquery-3.7.1.min.js"></script>
     <script src="../js/empleado.js"></script>
