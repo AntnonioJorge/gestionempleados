@@ -189,9 +189,13 @@ if(isset($_SESSION["nombre"])){?>
                     <label for="foto">foto:</label>
                     <input type="file" id="foto" name="foto" ><br>
 
+<<<<<<< HEAD
+                    <button id="btnregistrar" name="registrar" type="submit">Registrar</button>
+=======
                     <button type="submit">Registrar</button>
                     
                     <input type="reset" value="Cancelar">
+>>>>>>> a9f726af0866cc740f7ebc2b98c8fd291848e574
                 </form>
             </dialog>
         </main>
