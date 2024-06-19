@@ -93,6 +93,14 @@
             echo "error al actualizar empleado: " . $e->getMessage();
         }
     }
+
+    function buscarEmpleado($con, $texto,$parametro){
+        $sql = "SELECT * FROM empleado  WHERE $parametro LIKE '$texto%'";
+       
+        $con = $con->query($sql);
+        
+        return $con->fetch_All();
+    }
     
 
     

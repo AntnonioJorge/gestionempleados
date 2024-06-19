@@ -32,9 +32,20 @@ if(isset($_SESSION["nombre"])){?>
                         </li>
                         
                         <li>
-                            <form class="d-flex " action="">
-                                <input type="text" class="form-control">
-                                <button type="button"></button>
+                            <form class="d-flex " action="" method="POST">
+                                <input type="text" class="form-control" name="txtBuscarEmpleado" placeholder="buscar"  maxlength="30" >
+                                <input type="hidden" name="buscarEmpleado">
+                                <div class="select is-rouded">
+                                    <select name="opciones" id="opciones" >
+                                        <option value="nombreEmpleado" name="nombreEmpleado">Por Nombre</option>
+                                        <option value="apellidosEmpleado" name="apellido">Por apellidos</option>
+                                        <option value="correoEmpleado" name="correo">Por correo</option>
+                                        <option value="dipEmpleado" name="dip">Por dip</option>
+                                        <option value="salarioEmpleado" name="salario">Por salario</option>
+                                        <option value="edadEmpleado" name="fecha">Por edad</option>
+                                    </select>
+                                </div>
+                                <button type="Submit" name="buscarEmpleado">Buscar</button>
                             </form>
                         </li>
 
@@ -52,6 +63,15 @@ if(isset($_SESSION["nombre"])){?>
         include ("../../dao/d_empleado.php");
         $bdd = conectar("localhost", "root", "","gestionempleado");
         $empleados= mostrarTodosEmpleados($bdd);
+
+        if(isset($_POST['buscarEmpleado'])){
+            $parametro = $_POST['opciones'];
+            $texto = $_POST['txtBuscarEmpleado'];
+            $empleados=buscarEmpleado($bdd, $texto, $parametro);
+            
+
+           // header("Location: ../vista/php/vistaAdmin.php");
+        }
 
         if (isset($_GET['idEmpleadoEliminar'])) {
             // Verificar si el usuario realmente desea eliminar el empleado
@@ -119,16 +139,17 @@ if(isset($_SESSION["nombre"])){?>
             </thead>
             <tbody>
             <?php
+            
                 foreach($empleados as $empleado){?>
                 <tr>
-                    <td > <img style="border:1px solid black; border-radius: 10%" scope="row" alt="" width="80" hight="" src="../img/<?php echo $empleado["fotoEmpleado"]; ?>"> </td>
-                    <td><?php echo $empleado["nombreEmpleado"];?> </td>
-                    <td><?php echo $empleado["apellidosEmpleado"]; ?></td>
-                    <td><?php echo $empleado["correoEmpleado"]; ?></td>
-                    <td><?php echo $empleado["dipEmpleado"]; ?></td>
-                    <td hidden><?php echo $empleado["rolEmpleado"]; ?></td>
-                    <td><?php echo $empleado["salarioEmpleado"]; ?></td>
-                    <td><?php echo $empleado["edadEmpleado"]; ?></td>
+                    <td > <img style="border:1px solid black; border-radius: 10%" scope="row" alt="" width="80" hight="" src="../img/<?php echo $empleado['fotoEmpleado']; ?>"> </td>
+                    <td><?php echo $empleado['nombreEmpleado'];?> </td>
+                    <td><?php echo $empleado['apellidosEmpleado']; ?></td>
+                    <td><?php echo $empleado['correoEmpleado']; ?></td>
+                    <td><?php echo $empleado['dipEmpleado']; ?></td>
+                    <td hidden><?php echo $empleado[5]; ?></td>
+                    <td><?php echo $empleado['salarioEmpleado']; ?></td>
+                    <td><?php echo $empleado['dipEmpleado']; ?></td>
                     <td>
                         <a class="btn btn-warning btn-sm " href="actualizarEmpleado.php?idEmpleadoActualizar=<?php echo $empleado['idEmpleado'];?>"><i class="fa-regular fa-edit"></i></a> 
                         <a class="btn btn-sm btn-danger" href="vistaAdmin.php?idEmpleadoEliminar=<?php echo $empleado['idEmpleado'];?> id='btnEliminar' value='empleado'"> <i class="fa-regular fa-trash-can"></i></a>
