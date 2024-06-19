@@ -31,12 +31,12 @@ if(isset($_SESSION["nombre"])){?>
                             <button class="btn btn-success" aria-current="page" onclick="document.getElementById('modal_empleado').showModal()">Crear Empleado</button>
                         </li>
                         
-                        <li>
+                        <li class="nav-item">
                             <form class="d-flex " action="" method="POST">
                                 <input type="text" class="form-control" name="txtBuscarEmpleado" placeholder="buscar"  maxlength="30" >
                                 <input type="hidden" name="buscarEmpleado">
                                 <div class="select is-rouded">
-                                    <select name="opciones" id="opciones" >
+                                    <select  class="form-select" aria-label="Default select example" name="opciones" id="opciones" >
                                         <option value="nombreEmpleado" name="nombreEmpleado">Por Nombre</option>
                                         <option value="apellidosEmpleado" name="apellido">Por apellidos</option>
                                         <option value="correoEmpleado" name="correo">Por correo</option>
@@ -45,7 +45,7 @@ if(isset($_SESSION["nombre"])){?>
                                         <option value="edadEmpleado" name="fecha">Por edad</option>
                                     </select>
                                 </div>
-                                <button type="Submit" name="buscarEmpleado">Buscar</button>
+                                <button class="btn btn-outline-success" type="Submit" name="buscarEmpleado"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
                         </li>
 
@@ -189,13 +189,8 @@ if(isset($_SESSION["nombre"])){?>
                     <label for="foto">foto:</label>
                     <input type="file" id="foto" name="foto" ><br>
 
-<<<<<<< HEAD
                     <button id="btnregistrar" name="registrar" type="submit">Registrar</button>
-=======
-                    <button type="submit">Registrar</button>
-                    
                     <input type="reset" value="Cancelar">
->>>>>>> a9f726af0866cc740f7ebc2b98c8fd291848e574
                 </form>
             </dialog>
         </main>
