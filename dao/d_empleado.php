@@ -99,7 +99,7 @@
        
         $con = $con->query($sql);
         
-        return $con->fetch_All();
+        return $con;
     }
     
 

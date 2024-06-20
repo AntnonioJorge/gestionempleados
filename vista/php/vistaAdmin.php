@@ -34,15 +34,15 @@ if(isset($_SESSION["nombre"])){?>
                         <li>
                             <form class="d-flex " action="" method="POST">
                                 <input type="text" class="form-control" name="txtBuscarEmpleado" placeholder="buscar"  maxlength="30" >
-                                <input type="hidden" name="buscarEmpleado">
+                               
                                 <div class="select is-rouded">
                                     <select name="opciones" id="opciones" >
-                                        <option value="nombreEmpleado" name="nombreEmpleado">Por Nombre</option>
-                                        <option value="apellidosEmpleado" name="apellido">Por apellidos</option>
-                                        <option value="correoEmpleado" name="correo">Por correo</option>
-                                        <option value="dipEmpleado" name="dip">Por dip</option>
-                                        <option value="salarioEmpleado" name="salario">Por salario</option>
-                                        <option value="edadEmpleado" name="fecha">Por edad</option>
+                                        <option value="nombreEmpleado" name="">Por Nombre</option>
+                                        <option value="apellidosEmpleado" name="">Por apellidos</option>
+                                        <option value="correoEmpleado" name="">Por correo</option>
+                                        <option value="dipEmpleado" name="">Por dip</option>
+                                        <option value="salarioEmpleado" name="">Por salario</option>
+                                        <option value="edadEmpleado" name="">Por edad</option>
                                     </select>
                                 </div>
                                 <button type="Submit" name="buscarEmpleado">Buscar</button>
@@ -131,7 +131,6 @@ if(isset($_SESSION["nombre"])){?>
                     <td>Apellidos</td>
                     <td>Correo</td>
                     <td>Dip</td>
-                    <td hidden>Rol</td>
                     <td>Salario</td>
                     <td>Edad</td>
                     <td>Accion</td>
@@ -147,7 +146,6 @@ if(isset($_SESSION["nombre"])){?>
                     <td><?php echo $empleado['apellidosEmpleado']; ?></td>
                     <td><?php echo $empleado['correoEmpleado']; ?></td>
                     <td><?php echo $empleado['dipEmpleado']; ?></td>
-                    <td hidden><?php echo $empleado[5]; ?></td>
                     <td><?php echo $empleado['salarioEmpleado']; ?></td>
                     <td><?php echo $empleado['dipEmpleado']; ?></td>
                     <td>
@@ -187,15 +185,11 @@ if(isset($_SESSION["nombre"])){?>
                     <input type="text" id="rol" name="rol" required><br> -->
 
                     <label for="foto">foto:</label>
-                    <input type="file" id="foto" name="foto" ><br>
+                    <input type="file" id="foto" name="foto" required><br>
 
-<<<<<<< HEAD
-                    <button id="btnregistrar" name="registrar" type="submit">Registrar</button>
-=======
-                    <button type="submit">Registrar</button>
+                    <button type="submit" name="registrar">Registrar</button>
                     
                     <input type="reset" value="Cancelar">
->>>>>>> a9f726af0866cc740f7ebc2b98c8fd291848e574
                 </form>
             </dialog>
         </main>
