@@ -48,7 +48,9 @@
         try{
             $sql = "UPDATE usuarios SET 
                     nombreUsuario = '$usuario->nombreUsuario', 
-                    contrasenaUsuario = '$usuario->contraseñaUsuario'
+                    contrasenaUsuario = '$usuario->contraseñaUsuario',
+                    idROl = '$usuario->rol'
+                    
                     WHERE idUsuario = '$usuario->idUsuario'";
             $conexion->query($sql);
             
@@ -82,6 +84,17 @@
         $con = $con->query($sql);
         
         return $con;
+    }
+
+    function insertarUsuario($con, $usuario){
+        try{
+            $sql = "INSERT INTO usuarios (nombreUsuario, contrasenaUsuario, idRol)
+            VALUES('$usuario->nombreUsuario','$usuario->contraseñaUsuario','$usuario->rol')";
+            $con->query($sql);
+            var_dump($sql);
+        } catch(Exception $e) {
+            echo "error al insertar usuario: " . $e->getMessage();
+        }
     }
 
 

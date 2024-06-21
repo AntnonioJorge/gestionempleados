@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vista del Superadministrador</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/formularios.php">
     <script src="../js/all.min.js"></script>
     <link rel="stylesheet" href="../css/sweetalert2.min.css">
     <script src="../js/sweetalert2.all.min.js"></script>
@@ -29,7 +30,7 @@
     
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <li class="nav-item me-4">
-                            <button class="btn btn-primary" aria-current="page" href="index.php?vista=home">Crear Administrador</button>
+                            <button class="btn btn-primary" onclick="document.getElementById('modal_admin').showModal()" aria-current="page">Crear Administrador</button>
                         </li>
                         
                         <li>
@@ -92,7 +93,7 @@
                                     showConfirmButton: false,
                                     timer: 2000
                                 }).then(function() {
-                                    window.location.href = "listadeUsuarios.php"; // Redirige a la lista de empleados después de la notificación
+                                    window.location.href = "vistaSuperAdmin.php"; // Redirige a la lista de empleados después de la notificación
                                 });
                             });
                         </script>
@@ -114,7 +115,7 @@
                                 cancelButtonText: "Cancelar"
                             }).then(function(result) {
                                 if (result.value) {
-                                    window.location.href = "listadeUsuarios.php?idUsuarioEliminar=' . $_GET['idUsuarioEliminar'] . '&confirmarEliminacion=true";
+                                    window.location.href = "vistaSuperAdmin.php?idUsuarioEliminar=' . $_GET['idUsuarioEliminar'] . '&confirmarEliminacion=true";
                                 }
                             });
                         });
@@ -179,6 +180,32 @@
                     <input type="reset" value="CANCELAR">
             </form>
             </dialog>
+            <dialog id="modal_admin">
+            <form action="../../controlador/c_usuario.php" method="POST" >
+                    <label for="nombre">Nombre Administrador:</label>
+                    <input type="text" id="nombre" name="nombre" required><br>
+                    <label for="contaseña">Contraseña Administrador:</label>
+                    <input type="text" id="contraseña" name="contrasena" required><br>
+                    <label for="rol">ROL</label>
+                    <select name="rol" id="idRol">
+                    <?php
+                        
+                        $roles = recuperarRoles($bdd);
+                        foreach($roles as $rol)
+                        {
+                        ?>
+                            <option value=" <?php echo $rol["idRol"];?>"> 
+                            <?php echo $rol["rolUsuario"];?>
+                            </option>
+                        <?php   
+                        }
+                    ?>
+                        
+                    </select>
+                    <button id="btnregistrar" name="registrar" type="submit">Crear</button>
+                    <input type="reset" value="Cancelar">
+                </form>
+            </dialog>
 
         </main>
     </div>
@@ -187,10 +214,6 @@
     <script src="../js/bootstrap.min.js"></script>
 </body>
 </html>
-<<<<<<< HEAD
-
-=======
 <?php  
     }
 ?>
->>>>>>> fc8fd12bef7d92edf7d3ed2a68c9254da96c5b9b

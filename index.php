@@ -13,7 +13,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Formulario de Inicio de Sesión</title>
-<link rel="stylesheet" href="vista/css/login.css">
+<link rel="stylesheet" href="vista/css/logi.css">
+<link rel="stylesheet" href="vista/css/formularios.css">
 <link rel="stylesheet" href="vista/css/bootstrap.min.css">
 </head>
 

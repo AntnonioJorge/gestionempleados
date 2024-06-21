@@ -1,47 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../vista/css/sweetalert2.min.css">
-    <script src="../vista/js/sweetalert2.all.min.js" ></script>
-</head>
-<body>
-    <?php
+
+<?php
         if(isset($_POST['actualizar'])){
             include ("../dao/d_conexion.php");
             include ("../dao/d_usuario.php");
             include ("../modelo/m_usuario.php");
             $bdd = conectar("localhost", "root", "", "gestionempleado");
-            $usuarioActualizar = new Usuario($_POST["idUsuario"],$_POST["nombreUsuario"], $_POST["contrasenaUsuario"],$_POST["rol"] );
+            $usuarioActualizar = new Usuario($_POST["idUsuario"],$_POST["nombreUsuario"], $_POST["contrasenaUsuario"],$_POST["Rol"] );
             $resultado = actualizarUsuario($bdd, $usuarioActualizar);
             header("Location: ../vista/php/vistaSuperAdmin.php");
-           /*  if (!$resultado) {
-
-        echo 
-       
-       ' <script>
-        Swal.fire({
-                    title: "¡Empleado actualizado!",
-                    text: "Los datos del Usuario se han actualizado correctamente.",
-                    icon: "success",
-                    confirmButtonColor: "#3085d6",
-                    timer: 1000,
-                    allowOutsideClick: false
-                }).then((result) => {
-                    if (result.value) {
-                        window.location.href = "../vista/php/listadeUsuarios.php";
-                    }
-               
-                });
-            </script>';
-            
-    }*/
+  
 }
+if(isset($_POST["registrar"])){
+
+    echo "aser";
+    include "../dao/d_conexion.php";
+    include "../dao/d_usuario.php";
+    include "../modelo/m_usuario.php";
+
+    $conexion=conectar("localhost","root","","gestionempleado");
+    $usuario= new CrearUsuario($_POST["nombre"],$_POST["contrasena"],$_POST["rol"]);
+    
+    insertarUsuario($conexion, $usuario);  
+    header("Location: ../vista/php/vistaSuperAdmin.php");
+  
+
+} 
+
+
 
  
     ?>
 
    
-</body>
-</html>
