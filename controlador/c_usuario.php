@@ -13,7 +13,7 @@
             include ("../dao/d_usuario.php");
             include ("../modelo/m_usuario.php");
             $bdd = conectar("localhost", "root", "", "gestionempleado");
-            $usuarioActualizar = new Usuario($_POST["idUsuario"],$_POST["nombreUsuario"], $_POST["contrasenaUsuario"]);
+            $usuarioActualizar = new Usuario($_POST["idUsuario"],$_POST["nombreUsuario"], $_POST["contrasenaUsuario"],$_POST["rol"] );
             $resultado = actualizarUsuario($bdd, $usuarioActualizar);
             header("Location: ../vista/php/vistaSuperAdmin.php");
            /*  if (!$resultado) {

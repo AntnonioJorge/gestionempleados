@@ -94,8 +94,21 @@
         }
     }
 
+    function actualizarFoto($con, $foto){
+        try{
+            $sql = "UPDATE empleado SET 
+                    fotoEmpleado = '$foto->fotoEmpleado'
+                    
+                    WHERE idEmpleado = '$foto->idEmpleado'";
+            $con->query($sql);
+            
+        } catch(Exception $e) {
+            echo "error al actualizar Foto: " . $e->getMessage();
+        }
+    }
+
     function buscarEmpleado($con, $texto,$parametro){
-        $sql = "SELECT * FROM empleado  WHERE $parametro LIKE '$texto%'";
+        $sql = "SELECT * FROM empleado  WHERE $parametro LIKE '%$texto%'";
        
         $con = $con->query($sql);
         

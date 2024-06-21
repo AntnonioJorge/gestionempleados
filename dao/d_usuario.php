@@ -76,5 +76,13 @@
         return $con;
     }
 
+    function buscarUsuario($con, $texto,$parametro){
+        $sql = "SELECT * FROM usuarios  INNER JOIN rol  ON usuarios.idRol = rol.idRol  WHERE $parametro LIKE '%$texto%'";
+       
+        $con = $con->query($sql);
+        
+        return $con;
+    }
+
 
 ?>

@@ -33,10 +33,20 @@
                         </li>
                         
                         <li>
-                            <form class="d-flex " action="">
-                                <input type="text" class="form-control">
-                                <button type="button"></button>
+                        <li class="nav-item">
+                            <form class="d-flex " action="" method="POST">
+                                <input type="text" class="form-control" name="txtBuscarUsuario" placeholder="buscar"  maxlength="30" >
+                               
+                                <div class="select is-rouded">
+                                    <select  class="form-select" aria-label="Default select example" name="opciones" id="opciones">
+                                        <option value="nombreUsuario" name="contrasenaUsuario">Por Usuario</option>
+                                        <option value="rolUsuario" name="apellido">Por Contraseña</option>
+                                        <option value="rolUsuario" name="correo">Por Rol</option>
+                                    </select>
+                                </div>
+                                <button class="btn btn-outline-success" type="Submit" name="buscarUsuario"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
+                        </li>
                         </li>
 
                     </ul>
@@ -56,6 +66,17 @@
         include ("../../dao/d_usuario.php");
         $bdd = conectar("localhost", "root", "","gestionempleado");
         $usuarios= mostrarTodosUsuarios($bdd);
+
+        if(isset($_POST['buscarUsuario'])){
+            $parametro = $_POST['opciones'];
+            $texto = $_POST['txtBuscarUsuario'];
+            $usuarios=buscarUsuario($bdd, $texto, $parametro);
+            
+
+           // header("Location: ../vista/php/vistaAdmin.php");
+        }
+
+
         if (isset($_GET['idUsuarioEliminar'])) {
             // Verificar si el usuario realmente desea eliminar el empleado
             $confirmarEliminacion = isset($_GET['confirmarEliminacion']) && $_GET['confirmarEliminacion'] === 'true';

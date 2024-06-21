@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/formularios.css">
     <title>Actualizar de Empleado</title>
 </head>
 <body>
@@ -45,7 +46,8 @@
         <!-- <label  for="foto">Foto:</label>
         <input  type="file" id="foto" name="foto" value="<?//php echo $datos['fotoEmpleado'] ?>"><br> -->
 
-        <input type="submit" name="actualizar" value="Actualizar">
+        <!-- <input type="submit" name="actualizar" value="Actualizar"> -->
+        <button type="submit" name="actualizar" >Actualizar</button>
     </form>
 <?php
     } else {

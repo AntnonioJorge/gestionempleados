@@ -18,6 +18,25 @@ if(isset($_POST['actualizar']))
     header("Location: ../vista/php/vistaAdmin.php");
 }
 
+
+if(isset($_POST['actualizarFoto']))
+{
+    
+    include "../dao/d_conexion.php";
+    include "../dao/d_empleado.php";
+    include "../modelo/m_empleado.php";
+    $ruta="../vista/img/";
+    $ruta_completa=$ruta.$_FILES["foto"]["name"];
+
+    move_uploaded_file($_FILES["foto"]["tmp_name"],$ruta_completa);
+
+    $bdd=conectar("localhost","root","","gestionempleado");  
+   
+    $cambiarFoto = new CambiarFotos($_POST["idEmpleado"], $_FILES["foto"]["name"]);
+    $resultado = actualizarFoto($bdd, $cambiarFoto);
+    header("Location: ../vista/php/vistaAdmin.php");
+}
+
 if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["registrar"])){
 
     echo "aser";

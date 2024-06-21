@@ -1,6 +1,13 @@
 <?php 
 
-
+class CambiarFotos{
+    public $idEmpleado;
+    public $fotoEmpleado;
+    public function __construct($idEmpleado, $fotoEmpleado){
+        $this->idEmpleado = $idEmpleado;
+        $this->fotoEmpleado = $fotoEmpleado;
+    }
+   }
 
 class Empleado{
 
@@ -101,6 +108,9 @@ class Empleados{
     public $dipEmpleado;
    // public $fotoEmpleado;
 
+
+  
+
     public function __construct($idEmpleado,$nombreEmpleado, $apellidosEmpleado, $correoEmpleado, $salarioEmpleado, $edadEmpleado, $dipEmpleado /*, $fotoEmpleado */) {
         $this->idEmpleado = $idEmpleado;
         $this->nombreEmpleado = $nombreEmpleado;
@@ -179,5 +189,10 @@ class Empleados{
     //     $this->fotoEmpleado = $fotoEmpleado;
     // }
 }
+
+
+
+
+   
 
 ?>
